@@ -1,6 +1,8 @@
 #importing modules
 from tkinter import *
 import sqlite3
+from gtts import gTTS
+from playsound import playsound
 
 class Assistant:
 
@@ -13,7 +15,6 @@ class Assistant:
         frame.geometry('640x480')
 
         #creating greeting string
-
         self.greetingLabel = Label(frame, text=Assistant.greetings, fg = "blue", bg="black", font = "monospace 20").pack()
 
         # creating user name field
@@ -32,6 +33,12 @@ class Assistant:
         self.loginbtn = Button(frame, text="login", command = "something")
         self.loginbtn.place(x=150,y=200)
 
+    def greet(self):
+        # run audio
+        gttsGreetings = gTTS(text=Assistant.greetings,lang='en',slow=False).save("greeting.mp3")
+        playsound("greeting.mp3")
+
 window = Tk()
 x = Assistant(window)
+x.greet()
 window.mainloop()
