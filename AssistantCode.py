@@ -3,24 +3,35 @@ from tkinter import *
 import sqlite3
 
 class Assistant:
-    master = Tk()
-    #defining title and size of window
-    master.title("Welcome my aka")
-    master.minsize(320,320)
-    master.geometry('640x480')
 
-    # creating user name field
-    userNameLabel = Label(master, text="User Name")
-    userNameLabel.grid(column=0,row=0)
-    usertxt = Entry(master, width=20)
-    usertxt.grid(column=1, row=0)
+    greetings = "Hi I'm Jarvis. \nPlease confirm your identity..."
 
-    #creating password field
-    passwordLabel = Label(master, text="Password")
-    passwordLabel.grid(column=0,row=1)
-    passwordtxt = Entry(master, width=20)
-    passwordtxt.grid(column=1, row=1)
+    def __init__(self,frame):
+        #defining title and size of window
+        frame.title("Welcome my aka")
+        frame.minsize(320,320)
+        frame.geometry('640x480')
 
-    #creating login Button
-    loginbtn = Button(master, text="login", command = lambda: validateUser(usertxt,passwordtxt))
-    loginbtn.grid(column=2, row=2)
+        #creating greeting string
+
+        self.greetingLabel = Label(frame, text=Assistant.greetings, fg = "blue", bg="black", font = "monospace 20").pack()
+
+        # creating user name field
+        self.userNameLabel = Label(frame, text="User Name")
+        self.userNameLabel.place(x=70,y=100)
+        self.usertxt = Entry(frame, width=20)
+        self.usertxt.place(x=200,y=100)
+
+        #creating password field
+        self.passwordLabel = Label(frame, text="Password")
+        self.passwordLabel.place(x=70,y=150)
+        self.passwordtxt = Entry(frame, width=20)
+        self.passwordtxt.place(x=200,y=150)
+
+        #creating login Button
+        self.loginbtn = Button(frame, text="login", command = "something")
+        self.loginbtn.place(x=150,y=200)
+
+window = Tk()
+x = Assistant(window)
+window.mainloop()
